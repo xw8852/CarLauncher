@@ -49,6 +49,7 @@ import android.content.res.Configuration;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -227,7 +228,7 @@ public class Launcher extends Activity
     private View mLauncherView;
     @Thunk DragLayer mDragLayer;
     private DragController mDragController;
-    private View mQsbContainer;
+//    private View mQsbContainer;
 
     public View mWeightWatcher;
 
@@ -484,6 +485,7 @@ public class Launcher extends Activity
         if (Utilities.isNycOrAbove()) {
             mExtractedColors.load(this);
             mHotseat.updateColor(mExtractedColors, !mPaused);
+            mAppsView.setRevealDrawableColor( mExtractedColors.getColor(ExtractedColors.HOTSEAT_INDEX, Color.TRANSPARENT));
             mWorkspace.getPageIndicator().updateColor(mExtractedColors);
             // It's possible that All Apps is visible when this is run,
             // so always use light status bar in that case.
@@ -1312,8 +1314,8 @@ public class Launcher extends Activity
         mDragLayer = (DragLayer) findViewById(R.id.drag_layer);
         mFocusHandler = mDragLayer.getFocusIndicatorHelper();
         mWorkspace = (Workspace) mDragLayer.findViewById(R.id.workspace);
-        mQsbContainer = mDragLayer.findViewById(mDeviceProfile.isVerticalBarLayout()
-                ? R.id.workspace_blocked_row : R.id.qsb_container);
+//        mQsbContainer = mDragLayer.findViewById(mDeviceProfile.isVerticalBarLayout()
+//                ? R.id.workspace_blocked_row : R.id.qsb_container);
         mWorkspace.initParentViews(mDragLayer);
 
         mLauncherView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
@@ -1766,9 +1768,9 @@ public class Launcher extends Activity
         return mWorkspace;
     }
 
-    public View getQsbContainer() {
-        return mQsbContainer;
-    }
+//    public View getQsbContainer() {
+//        return mQsbContainer;
+//    }
 
     public Hotseat getHotseat() {
         return mHotseat;

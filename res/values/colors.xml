@@ -32,7 +32,7 @@
     <color name="page_indicator_dot_color">#FFDDDDDD</color>
 
     <color name="quantum_panel_text_color">#FF666666</color>
-    <color name="quantum_panel_bg_color">#FFF5F5F5</color>
+    <color name="quantum_panel_bg_color">#00F5F5F5</color>
 
     <color name="outline_color">#FFFFFFFF</color>
     <color name="all_apps_divider_color">#1E000000</color>

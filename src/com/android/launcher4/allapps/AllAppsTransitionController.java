@@ -7,6 +7,7 @@ import android.animation.AnimatorSet;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.ColorUtils;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
@@ -269,7 +270,9 @@ public class AllAppsTransitionController implements TouchController, VerticalPul
             if (!mLauncher.isAllAppsVisible()) {
                 mLauncher.tryAndUpdatePredictedApps();
                 mAppsView.setVisibility(View.VISIBLE);
-                mAppsView.setRevealDrawableColor(mHotseatBackgroundColor);
+//                int mBackgroundColor = ColorUtils.setAlphaComponent(
+//                        ContextCompat.getColor(mAppsView.getContext(), R.color.all_apps_container_color), 0);
+//                mAppsView.setRevealDrawableColor(mBackgroundColor);
             }
         }
     }
@@ -297,12 +300,11 @@ public class AllAppsTransitionController implements TouchController, VerticalPul
         float alpha = 1 - workspaceHotseatAlpha;
         float interpolation = mAccelInterpolator.getInterpolation(workspaceHotseatAlpha);
 
-        int color = (Integer) mEvaluator.evaluate(mDecelInterpolator.getInterpolation(alpha),
-                mHotseatBackgroundColor, mAllAppsBackgroundColor);
-        int bgAlpha = Color.alpha((int) mEvaluator.evaluate(alpha,
-                mHotseatBackgroundColor, mAllAppsBackgroundColor));
-
-        mAppsView.setRevealDrawableColor(ColorUtils.setAlphaComponent(color, bgAlpha));
+//        int color = (Integer) mEvaluator.evaluate(mDecelInterpolator.getInterpolation(alpha),
+//                mHotseatBackgroundColor, mAllAppsBackgroundColor);
+//        int bgAlpha = Color.alpha((int) mEvaluator.evaluate(alpha,
+//                mHotseatBackgroundColor, mAllAppsBackgroundColor));
+//        mAppsView.setRevealDrawableColor(ColorUtils.setAlphaComponent(color, bgAlpha));
         mAppsView.getContentView().setAlpha(alpha);
         mAppsView.setTranslationY(shiftCurrent);
 

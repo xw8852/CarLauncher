@@ -229,7 +229,7 @@ public class Workspace extends PagedView
     public static final int QSB_ALPHA_INDEX_OVERLAY_SCROLL = 3;
 
 
-    MultiStateAlphaController mQsbAlphaController;
+//    MultiStateAlphaController mQsbAlphaController;
 
     @ViewDebug.ExportedProperty(category = "launcher")
     private State mState = State.NORMAL;
@@ -509,7 +509,7 @@ public class Workspace extends PagedView
     public void initParentViews(View parent) {
         super.initParentViews(parent);
         mPageIndicator.setAccessibilityDelegate(new OverviewAccessibilityDelegate());
-        mQsbAlphaController = new MultiStateAlphaController(mLauncher.getQsbContainer(), 4);
+//        mQsbAlphaController = new MultiStateAlphaController(mLauncher.getQsbContainer(), 4);
     }
 
     private int getDefaultPage() {
@@ -642,17 +642,17 @@ public class Workspace extends PagedView
         // of workspace despite that it's not a true child.
         // Note that it relies on the strict ordering of measuring the workspace before the QSB
         // at the dragLayer level.
-        if (getChildCount() > 0) {
-            CellLayout firstPage = (CellLayout) getChildAt(0);
-            int cellHeight = firstPage.getCellHeight();
+//        if (getChildCount() > 0) {
+//            CellLayout firstPage = (CellLayout) getChildAt(0);
+//            int cellHeight = firstPage.getCellHeight();
 
-            View qsbContainer = mLauncher.getQsbContainer();
-            ViewGroup.LayoutParams lp = qsbContainer.getLayoutParams();
-            if (cellHeight > 0 && lp.height != cellHeight) {
-                lp.height = cellHeight;
-                qsbContainer.setLayoutParams(lp);
-            }
-        }
+//            View qsbContainer = mLauncher.getQsbContainer();
+//            ViewGroup.LayoutParams lp = qsbContainer.getLayoutParams();
+//            if (cellHeight > 0 && lp.height != cellHeight) {
+//                lp.height = cellHeight;
+//                qsbContainer.setLayoutParams(lp);
+//            }
+//        }
     }
 
     public void removeAllWorkspaceScreens() {
@@ -1437,10 +1437,10 @@ public class Workspace extends PagedView
     }
 
     private void onWorkspaceOverallScrollChanged() {
-        if (!mIgnoreQsbScroll) {
-            mLauncher.getQsbContainer().setTranslationX(
-                    mOverlayTranslation + mFirstPageScrollX - getScrollX());
-        }
+//        if (!mIgnoreQsbScroll) {
+//            mLauncher.getQsbContainer().setTranslationX(
+//                    mOverlayTranslation + mFirstPageScrollX - getScrollX());
+//        }
     }
 
     @Override
@@ -1518,7 +1518,7 @@ public class Workspace extends PagedView
         setHotseatTranslationAndAlpha(Direction.X, transX, alpha);
         onWorkspaceOverallScrollChanged();
 
-        mQsbAlphaController.setAlphaAtIndex(alpha, QSB_ALPHA_INDEX_OVERLAY_SCROLL);
+//        mQsbAlphaController.setAlphaAtIndex(alpha, QSB_ALPHA_INDEX_OVERLAY_SCROLL);
     }
 
     /**
@@ -1529,8 +1529,8 @@ public class Workspace extends PagedView
     public void setWorkspaceYTranslationAndAlpha(float translation, float alpha) {
         setWorkspaceTranslationAndAlpha(Direction.Y, translation, alpha);
 
-        mLauncher.getQsbContainer().setTranslationY(translation);
-        mQsbAlphaController.setAlphaAtIndex(alpha, QSB_ALPHA_INDEX_Y_TRANSLATION);
+//        mLauncher.getQsbContainer().setTranslationY(translation);
+//        mQsbAlphaController.setAlphaAtIndex(alpha, QSB_ALPHA_INDEX_Y_TRANSLATION);
     }
 
     /**
@@ -1738,10 +1738,10 @@ public class Workspace extends PagedView
                     float scrollProgress = getScrollProgress(screenCenter, child, i);
                     float alpha = 1 - Math.abs(scrollProgress);
                     child.getShortcutsAndWidgets().setAlpha(alpha);
-
-                    if (isQsbContainerPage(i)) {
-                        mQsbAlphaController.setAlphaAtIndex(alpha, QSB_ALPHA_INDEX_PAGE_SCROLL);
-                    }
+//
+//                    if (isQsbContainerPage(i)) {
+//                        mQsbAlphaController.setAlphaAtIndex(alpha, QSB_ALPHA_INDEX_PAGE_SCROLL);
+//                    }
                 }
             }
         }
@@ -4359,7 +4359,7 @@ public class Workspace extends PagedView
         void prepareStateChange(State toState, AnimatorSet targetAnim);
     }
 
-    public static final boolean isQsbContainerPage(int pageNo) {
-        return pageNo == 0;
-    }
+//    public static final boolean isQsbContainerPage(int pageNo) {
+//        return pageNo == 0;
+//    }
 }

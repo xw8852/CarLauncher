@@ -20,6 +20,7 @@ import android.app.WallpaperManager;
 import android.content.Context;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -45,6 +46,8 @@ public class ShortcutAndWidgetContainer extends ViewGroup {
     private Launcher mLauncher;
 
     private boolean mInvertIfRtl = false;
+
+
 
     public ShortcutAndWidgetContainer(Context context) {
         super(context);

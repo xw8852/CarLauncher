@@ -429,7 +429,7 @@ public class AlphabeticalAppsList {
         }
 
         // Add the search divider
-        mAdapterItems.add(AdapterItem.asSearchDivder(position++));
+//        mAdapterItems.add(AdapterItem.asSearchDivder(position++));
 
         // Process the predicted app components
         mPredictedApps.clear();

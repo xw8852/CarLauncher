@@ -151,10 +151,10 @@ public class AllAppsContainerView extends BaseContainerView implements DragSourc
     private AllAppsRecyclerView mAppsRecyclerView;
     private AllAppsSearchBarController mSearchBarController;
 
-    private View mSearchContainer;
+//    private View mSearchContainer;
     private ExtendedEditText mSearchInput;
-    private HeaderElevationController mElevationController;
-    private int mSearchContainerOffsetTop;
+//    private HeaderElevationController mElevationController;
+//    private int mSearchContainerOffsetTop;
 
     private SpannableStringBuilder mSearchQueryBuilder = null;
 
@@ -272,9 +272,9 @@ public class AllAppsContainerView extends BaseContainerView implements DragSourc
 
         // IF the MotionEvent is inside the search box, and the container keeps on receiving
         // touch input, container should move down.
-        if (mLauncher.getDragLayer().isEventOverView(mSearchContainer, ev)) {
-            return true;
-        }
+//        if (mLauncher.getDragLayer().isEventOverView(mSearchContainer, ev)) {
+//            return true;
+//        }
 
         // IF the MotionEvent is inside the thumb, container should not be pulled down.
         if (mAppsRecyclerView.getScrollBar().isNearThumb(point[0], point[1])) {
@@ -328,7 +328,7 @@ public class AllAppsContainerView extends BaseContainerView implements DragSourc
             }
         });
 
-        mSearchContainer = findViewById(R.id.search_container);
+//        mSearchContainer = findViewById(R.id.search_container);
         mSearchInput = (ExtendedEditText) findViewById(R.id.search_box_input);
 
         // Update the hint to contain the icon.
@@ -340,12 +340,12 @@ public class AllAppsContainerView extends BaseContainerView implements DragSourc
                 0, 1, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
         mSearchInput.setHint(spanned);
 
-        mSearchContainerOffsetTop = getResources().getDimensionPixelSize(
-                R.dimen.all_apps_search_bar_margin_top);
+//        mSearchContainerOffsetTop = getResources().getDimensionPixelSize(
+//                R.dimen.all_apps_search_bar_margin_top);
 
-        mElevationController = Utilities.ATLEAST_LOLLIPOP
-                ? new HeaderElevationController.ControllerVL(mSearchContainer)
-                : new HeaderElevationController.ControllerV16(mSearchContainer);
+//        mElevationController = Utilities.ATLEAST_LOLLIPOP
+//                ? new HeaderElevationController.ControllerVL(mSearchContainer)
+//                : new HeaderElevationController.ControllerV16(mSearchContainer);
 
         // Load the all apps recycler view
         mAppsRecyclerView = (AllAppsRecyclerView) findViewById(R.id.apps_list_view);
@@ -353,8 +353,8 @@ public class AllAppsContainerView extends BaseContainerView implements DragSourc
         mAppsRecyclerView.setLayoutManager(mLayoutManager);
         mAppsRecyclerView.setAdapter(mAdapter);
         mAppsRecyclerView.setHasFixedSize(true);
-        mAppsRecyclerView.addOnScrollListener(mElevationController);
-        mAppsRecyclerView.setElevationController(mElevationController);
+//        mAppsRecyclerView.addOnScrollListener(mElevationController);
+//        mAppsRecyclerView.setElevationController(mElevationController);
 
         if (mItemDecoration != null) {
             mAppsRecyclerView.addItemDecoration(mItemDecoration);
@@ -398,11 +398,11 @@ public class AllAppsContainerView extends BaseContainerView implements DragSourc
                     final int thumbMaxWidth =
                             getResources().getDimensionPixelSize(
                                     R.dimen.container_fastscroll_thumb_max_width);
-                    mSearchContainer.setPadding(
-                            rvPadding - mContainerPaddingLeft + thumbMaxWidth,
-                            mSearchContainer.getPaddingTop(),
-                            rvPadding - mContainerPaddingRight + thumbMaxWidth,
-                            mSearchContainer.getPaddingBottom());
+//                    mSearchContainer.setPadding(
+//                            rvPadding - mContainerPaddingLeft + thumbMaxWidth,
+//                            mSearchContainer.getPaddingTop(),
+//                            rvPadding - mContainerPaddingRight + thumbMaxWidth,
+//                            mSearchContainer.getPaddingBottom());
                 }
             }
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -448,7 +448,7 @@ public class AllAppsContainerView extends BaseContainerView implements DragSourc
 
         mAppsRecyclerView.updateBackgroundPadding(bgPadding);
         mAdapter.updateBackgroundPadding(bgPadding);
-        mElevationController.updateBackgroundPadding(bgPadding);
+//        mElevationController.updateBackgroundPadding(bgPadding);
 
         // Pad the recycler view by the background padding plus the start margin (for the section
         // names)
@@ -462,9 +462,9 @@ public class AllAppsContainerView extends BaseContainerView implements DragSourc
                     maxScrollBarWidth, mRecyclerViewBottomPadding);
         }
 
-        MarginLayoutParams lp = (MarginLayoutParams) mSearchContainer.getLayoutParams();
-        lp.leftMargin = bgPadding.left;
-        lp.rightMargin = bgPadding.right;
+//        MarginLayoutParams lp = (MarginLayoutParams) mSearchContainer.getLayoutParams();
+//        lp.leftMargin = bgPadding.left;
+//        lp.rightMargin = bgPadding.right;
 
         // Clip the view to the left and right edge of the background to
         // to prevent shadows from rendering beyond the edges
@@ -482,17 +482,17 @@ public class AllAppsContainerView extends BaseContainerView implements DragSourc
 
                 Rect insets = mLauncher.getDragLayer().getInsets();
                 getContentView().setPadding(0, 0, 0, 0);
-                int height = insets.top + grid.hotseatCellHeightPx;
-
+                int height = insets.top ;
+//+ grid.hotseatCellHeightPx
                 mlp.topMargin = height;
                 mAppsRecyclerView.setLayoutParams(mlp);
 
-                mSearchContainer.setPadding(
-                        mSearchContainer.getPaddingLeft(),
-                        insets.top + mSearchContainerOffsetTop,
-                        mSearchContainer.getPaddingRight(),
-                        mSearchContainer.getPaddingBottom());
-                lp.height = height;
+//                mSearchContainer.setPadding(
+//                        mSearchContainer.getPaddingLeft(),
+//                        insets.top + mSearchContainerOffsetTop,
+//                        mSearchContainer.getPaddingRight(),
+//                        mSearchContainer.getPaddingBottom());
+//                lp.height = height;
 
                 View navBarBg = findViewById(R.id.nav_bar_bg);
                 ViewGroup.LayoutParams params = navBarBg.getLayoutParams();
@@ -501,7 +501,7 @@ public class AllAppsContainerView extends BaseContainerView implements DragSourc
                 navBarBg.setVisibility(View.VISIBLE);
             }
         }
-        mSearchContainer.setLayoutParams(lp);
+//        mSearchContainer.setLayoutParams(lp);
     }
 
     @Override

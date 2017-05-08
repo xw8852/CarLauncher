@@ -41,18 +41,19 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:saveEnabled="false"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <!-- DO NOT CHANGE THE ID -->
+        <!--            android:layout_marginTop="@dimen/all_apps_search_bar_height"-->
         <com.android.launcher4.allapps.AllAppsRecyclerView
             android:id="@+id/apps_list_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal|top"
-            android:layout_marginTop="@dimen/all_apps_search_bar_height"
             android:clipToPadding="false"
             android:descendantFocusability="afterDescendants"
             android:focusable="true"
+            android:overScrollMode="never"
             android:theme="@style/CustomOverscroll.Light" />
 
         <FrameLayout
@@ -60,6 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/all_apps_search_bar_height"
             android:layout_gravity="center|top"
+            android:visibility="gone"
             android:paddingTop="@dimen/all_apps_search_bar_margin_top"
             android:gravity="center|bottom"
             android:orientation="horizontal"
